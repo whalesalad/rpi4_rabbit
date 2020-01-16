@@ -1,7 +1,7 @@
 defmodule NervesSystemRpi4.MixProject do
   use Mix.Project
 
-  @app :nerves_system_rpi4
+  @app :rpi4_rabbit
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -16,7 +16,7 @@ defmodule NervesSystemRpi4.MixProject do
       description: description(),
       package: package(),
       deps: deps(),
-      aliases: [loadconfig: [&bootstrap/1], docs: ["docs", &copy_images/1]],
+      aliases: [lixoadconfig: [&bootstrap/1], docs: ["docs", &copy_images/1]],
       docs: [extras: ["README.md"], main: "readme"]
     ]
   end
@@ -35,7 +35,7 @@ defmodule NervesSystemRpi4.MixProject do
     [
       type: :system,
       artifact_sites: [
-        {:github_releases, "nerves-project/#{@app}"}
+        {:github_releases, "whalesalad/#{@app}"}
       ],
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
@@ -58,15 +58,15 @@ defmodule NervesSystemRpi4.MixProject do
 
   defp description do
     """
-    Nerves System - Raspberry Pi 4
+    Nerves System - Raspberry Pi 4 (Rabbit Build)
     """
   end
 
   defp package do
     [
       files: package_files(),
-      licenses: ["Apache 2.0"],
-      links: %{"GitHub" => "https://github.com/nerves-project/#{@app}"}
+      # licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/whalesalad/#{@app}"}
     ]
   end
 
