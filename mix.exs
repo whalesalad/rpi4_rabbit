@@ -1,4 +1,4 @@
-defmodule NervesSystemRpi4.MixProject do
+defmodule Rpi4Rabbit.MixProject do
   use Mix.Project
 
   @app :rpi4_rabbit
@@ -16,7 +16,7 @@ defmodule NervesSystemRpi4.MixProject do
       description: description(),
       package: package(),
       deps: deps(),
-      aliases: [lixoadconfig: [&bootstrap/1], docs: ["docs", &copy_images/1]],
+      aliases: [loadconfig: [&bootstrap/1], docs: ["docs", &copy_images/1]],
       docs: [extras: ["README.md"], main: "readme"]
     ]
   end
@@ -34,9 +34,9 @@ defmodule NervesSystemRpi4.MixProject do
   defp nerves_package do
     [
       type: :system,
-      artifact_sites: [
-        {:github_releases, "whalesalad/#{@app}"}
-      ],
+      #artifact_sites: [
+      #  {:github_releases, "whalesalad/#{@app}"}
+      #],
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
       platform_config: [
@@ -50,7 +50,7 @@ defmodule NervesSystemRpi4.MixProject do
     [
       {:nerves, "~> 1.5", runtime: false},
       {:nerves_system_br, "1.10.0", runtime: false},
-      {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.2.0", runtime: false},
+      {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.2.0", runtime: false, nerves_compile: true},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
     ]
